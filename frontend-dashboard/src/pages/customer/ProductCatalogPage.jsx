@@ -17,6 +17,11 @@ function ProductCatalogPage() {
           Explore products and open the details page.
         </p>
 
+        {inventory.length === 0 ? (
+          <div className="empty-box">
+            <p>No products available right now. Check back soon!</p>
+          </div>
+        ) : (
         <div className="inventory-list-grid">
           {inventory.map((product) => {
             const isLowStock = product.stock <= product.reorderLevel;
@@ -146,6 +151,7 @@ function ProductCatalogPage() {
             );
           })}
         </div>
+        )}
       </section>
     </div>
   );
