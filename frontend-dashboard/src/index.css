@@ -1,0 +1,78 @@
+:root {
+  /* Crisp bright palette inspired by Walmart & Amazon */
+  --bg: #ffffff;
+  --panel-bg: #f8fafc;
+  --text-h: #0f172a;
+  --text: #334155;
+  --border: #e2e8f0;
+  
+  /* Vibrant corporate branding accents */
+  --accent: #2563eb; /* Clean digital blue */
+  --accent-bg: rgba(37, 99, 235, 0.08);
+  --accent-border: rgba(37, 99, 235, 0.3);
+  --code-bg: #f1f5f9;
+  --shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
+
+  --sans: Arial, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: Arial, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  margin: 16px 0;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 15px;
+  padding: 4px 8px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  color: var(--text-h);
+}

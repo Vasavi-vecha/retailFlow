@@ -1,0 +1,882 @@
+/* ==========================================================================
+   GLOBAL RESET & LAYOUT SYSTEMS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f1f3f6; /* Soft corporate grey backdrop */
+  color: #212121;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+/* ==========================================================================
+   AUTHENTICATION LAYOUTS (Centered Clean Cards)
+   ========================================================================== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f3f6;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-card h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #212121;
+}
+
+.auth-error {
+  margin: 0;
+  color: #c53030;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.auth-switch {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #878787;
+}
+
+.auth-switch a {
+  color: #2874f0;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   PORTAL SHELL FRAMEWORKS (Admin Layout Fixed)
+   ========================================================================== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f1f3f6;
+  width: 100%;
+}
+
+/* Sidebar Panel Fixing */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #dbdbdb;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.sidebar-user {
+  font-weight: 600;
+  color: #212121;
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+/* Main Workspace Framework */
+.main-content {
+  flex: 1;
+  padding: 32px;
+  background: #f1f3f6;
+  min-width: 0; /* Critical browser patch preventing grid blowouts */
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.nav-link {
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #666666;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: #f5f7fa;
+  color: #212121;
+}
+
+.nav-link.active {
+  background: #f0f5ff;
+  color: #2874f0;
+  font-weight: 600;
+}
+
+/* Header Action Bars */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  margin-bottom: 24px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #212121;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.topbar-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #878787;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   PANELS & DATA BOX CARDS LAYOUTS (Fixes Clumsy single-line text formatting)
+   ========================================================================== */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.panel {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  margin-bottom: 24px;
+}
+
+.panel-wide {
+  grid-column: 1 / -1;
+}
+
+.section-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2874f0;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.section-text {
+  margin: 0 0 20px 0;
+  color: #878787;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Live Operational Statistics Cards Grid Framework */
+.stats-grid, .inventory-grid, .orders-stats-grid, .metrics-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Clean horizontal block rows */
+  gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+  .stats-grid, .inventory-grid, .metrics-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.stat-card, .inventory-card, .info-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-card span {
+  font-size: 13px;
+  color: #878787;
+  font-weight: 500;
+}
+
+/* Fixes clumped-up zero counts numbers */
+.stat-card strong {
+  display: block;
+  margin: 12px 0 6px 0;
+  font-size: 32px;
+  color: #212121;
+  font-weight: 700;
+}
+
+.stat-card small {
+  font-size: 12px;
+  color: #878787;
+}
+
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.info-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #212121;
+  font-size: 16px;
+}
+
+.info-card p {
+  margin: 0;
+  color: #666666;
+  font-size: 14px;
+}
+
+/* Border Alert status states */
+.info-card.warning { border-left: 4px solid #ff9f00; }
+.info-card.info { border-left: 4px solid #2874f0; }
+.info-card.danger { border-left: 4px solid #e53e3e; }
+
+/* ==========================================================================
+   METRICS PLATFORM WORKSPACES FIXED (Arranges data attributes cleanly)
+   ========================================================================== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Clean two-column grid */
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+}
+
+.metric-service-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.metric-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.metric-card-top h4 {
+  margin: 4px 0 0 0;
+  font-size: 20px;
+  color: #212121;
+}
+
+/* Arranges metric data metrics into explicit blocks */
+.metric-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.metric-info-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-info-grid p {
+  font-size: 12px;
+  color: #878787;
+  text-transform: uppercase;
+}
+
+.metric-info-grid strong {
+  font-size: 18px;
+  color: #212121;
+}
+
+.metric-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.metric-progress-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metric-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.metrics-highlight-row {
+  margin-top: 16px;
+}
+
+.metrics-highlight-card {
+  background: #f0f5ff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metrics-highlight-card span {
+  font-size: 13px;
+  color: #666666;
+}
+
+.metrics-highlight-card strong {
+  font-size: 24px;
+  color: #2874f0;
+}
+
+/* ==========================================================================
+   PRODUCT CUSTOMER GRIDS & CONTROL INTERFACES
+   ========================================================================== */
+.inventory-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+@media (max-width: 960px) { .inventory-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .inventory-list-grid { grid-template-columns: 1fr; } }
+
+.inventory-detail-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inventory-detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.inventory-detail-top h4 {
+  margin: 4px 0 0 0;
+  font-size: 18px;
+  color: #212121;
+}
+
+.inventory-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+  padding: 12px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Horizontal Progress bars metrics */
+.stock-progress-block {
+  margin: 16px 0;
+}
+
+.stock-progress-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.stock-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.stock-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.success-fill { background: #4ade80; }
+.warning-fill { background: #fbbf24; }
+.danger-fill { background: #f87171; }
+
+/* Interactive Buttons and Toolbars inputs */
+.toolbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Operational Tables data sheets */
+.table-wrap {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dbdbdb;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th, .orders-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.orders-table th {
+  background: #f8fafc;
+  color: #666666;
+  font-weight: 600;
+}
+
+/* Action Trigger Badges layouts */
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  background: #ff9f00;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover { background: #f39200; }
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #212121;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.secondary-btn:hover { background: #f9f9f9; }
+
+.delete-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.ghost-btn {
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #666666;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.ghost-btn:hover { background: #f5f5f5; }
+.inventory-actions { display: flex; gap: 8px; }
+
+/* Status Labels classes */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.placed { background: #e3f2fd; color: #0d47a1; }
+.badge.shipped { background: #fff8e1; color: #ff6f00; }
+.badge.delivered { background: #e8f5e9; color: #1b5e20; }
+
+.small-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f0f0f0;
+  color: #212121;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.severity-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.severity-healthy { background: #e8f5e9; color: #1b5e20; }
+.severity-medium { background: #fff8e1; color: #ff6f00; }
+.severity-critical { background: #fee2e2; color: #b91c1c; }
+
+.status-pill {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f0f0f0;
+  color: #666666;
+  font-size: 12px;
+}
+
+.empty-box {
+  padding: 40px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px dashed #c2c2c2;
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   DASHBOARD TELEMETRY HIGHLIGHTS (Fixes Overview overlapping text bugs)
+   ========================================================================== */
+.dashboard-page-grid { align-items: start; }
+.dashboard-hero { background: #ffffff !important; }
+.dashboard-hero-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.dashboard-hero-text { max-width: 70%; }
+.dashboard-hero-badges { display: flex; gap: 8px; }
+.dashboard-summary-grid { margin-top: 16px; }
+.dashboard-section-head { margin-bottom: 16px; }
+.dashboard-activity-list { display: flex; flex-direction: column; gap: 12px; }
+
+.dashboard-activity-card {
+  display: flex;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dashboard-activity-line { width: 4px; flex-shrink: 0; }
+.dashboard-activity-line.info { background: #2874f0; }
+.dashboard-activity-line.warning { background: #ff9f00; }
+.dashboard-activity-line.danger { background: #e53e3e; }
+.dashboard-activity-line.success { background: #1b5e20; }
+.dashboard-activity-content { padding: 16px; flex: 1; }
+.dashboard-activity-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.dashboard-activity-top strong { color: #212121; }
+.dashboard-activity-top span { color: #878787; font-size: 12px; }
+.dashboard-activity-content p { margin: 0; color: #666666; font-size: 14px; }
+
+/* E-Commerce Cards flows */
+.cart-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.checkout-summary-box {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f5f7fa;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+/* ==========================================================================
+   RESPONSIVE LAYOUT VISIBILITY OVERRIDES (Fixes Clumsy Stacking)
+   ========================================================================== */
+
+/* 1. Desktop Visibility Base Rules */
+.desktop-orders {
+  display: block; /* Shows table cleanly on computer screens */
+}
+
+.mobile-orders {
+  display: none; /* Absolute default: hides stacked lists on computers */
+}
+
+/* 2. Responsive Breakpoint Rules (Activates for Tablets and Phones) */
+@media (max-width: 900px) {
+  .desktop-orders {
+    display: none; /* Hides the wide table when screen is too narrow */
+  }
+
+  .mobile-orders {
+    display: flex; /* Swaps to displaying mobile cards instead */
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+}
+
+/* 3. Modern Card Design for Mobile View (When visible) */
+.mobile-order-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-order-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #878787;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.mobile-order-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mobile-order-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+/* ==========================================================================
+   VIBRANT DASHBOARD CARD OVERRIDES (Fixes Plain Interface)
+   ========================================================================== */
+
+/* Base enhancement for all statistics cards */
+.stat-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid #cbd5e1; /* Default top border accent line */
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 1. Total Orders Card Variant (Professional Corporate Blue) */
+.stat-card:nth-of-type(1) {
+  background: #f0f6ff; /* Ultra light blue backdrop */
+  border: 1px solid #bfdbfe;
+  border-top: 4px solid #2874f0; /* Crisp blue top border line */
+}
+.stat-card:nth-of-type(1) strong {
+  color: #1e3a8a; /* Deep matching text blue */
+}
+.stat-card:nth-of-type(1) span {
+  color: #2563eb;
+}
+
+/* 2. Total Revenue Card Variant (Financial Growth Success Green) */
+.stat-card:nth-of-type(2) {
+  background: #f0fdf4; /* Ultra light green backdrop */
+  border: 1px solid #bbf7d0;
+  border-top: 4px solid #22c55e; /* Vibrant logistics green line */
+}
+.stat-card:nth-of-type(2) strong {
+  color: #14532d; /* Deep ink green value */
+}
+.stat-card:nth-of-type(2) span {
+  color: #16a34a;
+}
+
+/* 3. Placed/Pending Orders Card Variant (Fulfillment Tracking Indigo) */
+.stat-card:nth-of-type(3) {
+  background: #f5f3ff; /* Ultra light purple/indigo backdrop */
+  border: 1px solid #ddd6fe;
+  border-top: 4px solid #7c3aed; /* System action purple line */
+}
+.stat-card:nth-of-type(3) strong {
+  color: #4c1d95;
+}
+.stat-card:nth-of-type(3) span {
+  color: #6d28d9;
+}
+
+/* 4. Low Stock/Alerts Card Variant (Critical Infrastructure Risk Amber) */
+.stat-card:nth-of-type(4) {
+  background: #fff7ed; /* Ultra light warning orange backdrop */
+  border: 1px solid #ffedd5;
+  border-top: 4px solid #ea580c; /* Risk alert warning orange line */
+}
+.stat-card:nth-of-type(4) strong {
+  color: #7c2d12;
+}
+.stat-card:nth-of-type(4) span {
+  color: #c2410c;
+}
+
+/* Bonus: Clean shadow box glow around recent activity logs */
+.dashboard-activity-card {
+  border-left: 4px solid #2874f0 !important;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+/* ==========================================================================
+   INPUT FIELDS & AUTH SPACING PATCH (Fixes Clumsy Jammed Fields)
+   ========================================================================== */
+
+/* 1. Forces form fields to stack neatly vertically instead of pushing horizontally */
+.form-field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important; /* Spaces the label text nicely above its text box */
+  margin-bottom: 16px !important; /* Pushes the entire row away from the next input */
+  width: 100% !important;
+}
+
+/* 2. Style the text labels above the input boxes */
+.form-field label {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #212121 !important;
+  margin: 0 !important;
+}
+
+/* 3. Overhauls the plain unstyled text boxes to give them the modern Walmart look */
+.input, .auth-card input {
+  width: 100% !important;
+  background: #ffffff !important;
+  color: #212121 !important;
+  border: 1px solid #c2c2c2 !important; /* Clean gray bounding box border */
+  border-radius: 4px !important;
+  padding: 12px 14px !important; /* Adds premium internal breathing padding */
+  outline: none !important;
+  font-size: 14px !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.2s ease !important;
+}
+
+/* 4. Highlights the border in e-commerce blue when the operator clicks inside it */
+.input:focus, .auth-card input:focus {
+  border-color: #2874f0 !important;
+  box-shadow: 0 0 0 2px rgba(40, 116, 240, 0.1) !important;
+}
+
+/* 5. Clean structural width alignment for the card container buttons */
+.auth-card .primary-btn {
+  margin-top: 10px !important;
+  width: 100% !important;
+  padding: 14px !important;
+}

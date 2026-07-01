@@ -1,0 +1,22 @@
+# Root-level Node deps (Playwright driver for the run-retailflow skill)
+node_modules/
+/package.json
+/package-lock.json
+
+# IDE
+.idea/
+.vscode/
+
+# Claude Code agent tooling (dev-only, not part of the app)
+.claude/
+
+# Maven build output (each service also has its own copy of this rule)
+target/
+
+# Stray local logs
+/auth.log
+*.log
+
+# OS cruft
+.DS_Store
+Thumbs.db
