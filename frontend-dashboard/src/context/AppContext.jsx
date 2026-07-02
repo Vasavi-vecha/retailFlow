@@ -57,6 +57,11 @@ export function AppProvider({ children }) {
     await refreshInventory();
   }
 
+  async function addInventoryItem(productData) {
+    await catalogApi.addInventoryItem(productData);
+    await refreshInventory();
+  }
+
   async function updateOrderStatus(orderId, status) {
     await ordersApi.updateOrderStatus(orderId, status);
     await refreshOrders();
@@ -120,6 +125,7 @@ export function AppProvider({ children }) {
       state: { orders, inventory, alerts },
       adjustStock,
       deleteInventoryItem,
+      addInventoryItem,
       updateOrderStatus,
       deleteOrder,
       acknowledgeAlert,
