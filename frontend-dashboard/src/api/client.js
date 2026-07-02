@@ -1,10 +1,10 @@
 // src/api/client.js
 
 export const SERVICE_URLS = {
-  auth: "http://localhost:8081",
-  product: "http://localhost:8082",
-  order: "http://localhost:8083",
-  alert: "http://localhost:8084",
+  auth: import.meta.env.VITE_AUTH_URL || "http://localhost:8081",
+  product: import.meta.env.VITE_PRODUCT_URL || "http://localhost:8082",
+  order: import.meta.env.VITE_ORDER_URL || "http://localhost:8083",
+  alert: import.meta.env.VITE_ALERT_URL || "http://localhost:8084",
 };
 
 export async function apiRequest(baseUrl, path, options = {}) {
