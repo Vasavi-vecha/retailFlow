@@ -7,10 +7,7 @@ services:
     plan: free
     envVars:
       - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          type: web
-          name: retailflow-frontend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-frontend.onrender.com
 
   - type: web
     name: retailflow-product
@@ -20,10 +17,7 @@ services:
     plan: free
     envVars:
       - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          type: web
-          name: retailflow-frontend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-frontend.onrender.com
 
   - type: web
     name: retailflow-order
@@ -33,10 +27,7 @@ services:
     plan: free
     envVars:
       - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          type: web
-          name: retailflow-frontend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-frontend.onrender.com
 
   - type: web
     name: retailflow-alert
@@ -46,10 +37,7 @@ services:
     plan: free
     envVars:
       - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          type: web
-          name: retailflow-frontend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-frontend.onrender.com
 
   - type: web
     name: retailflow-frontend
@@ -58,25 +46,13 @@ services:
     staticPublishPath: ./frontend-dashboard/dist
     envVars:
       - key: VITE_AUTH_URL
-        fromService:
-          type: web
-          name: retailflow-auth
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-auth.onrender.com
       - key: VITE_PRODUCT_URL
-        fromService:
-          type: web
-          name: retailflow-product
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-product.onrender.com
       - key: VITE_ORDER_URL
-        fromService:
-          type: web
-          name: retailflow-order
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-order.onrender.com
       - key: VITE_ALERT_URL
-        fromService:
-          type: web
-          name: retailflow-alert
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://retailflow-alert.onrender.com
     routes:
       - type: rewrite
         source: /*
