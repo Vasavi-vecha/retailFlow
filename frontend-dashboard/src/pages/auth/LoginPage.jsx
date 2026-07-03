@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import logoImg from "../../assets/logo.png"; // Imported brand logo asset
+
+// Free-tier backends spin down when idle and can take ~60-90s to wake on the first request
+const WAKE_UP_HINT_DELAY_MS = 5000;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -13,6 +16,9 @@ function LoginPage() {
   });
 
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showWakeUpHint, setShowWakeUpHint] = useState(false);
+  const wakeUpTimerRef = useRef(null);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -22,6 +28,12 @@ function LoginPage() {
   async function handleSubmit(event) {
     event.preventDefault();
     setError("");
+    setIsSubmitting(true);
+    setShowWakeUpHint(false);
+
+    wakeUpTimerRef.current = setTimeout(() => {
+      setShowWakeUpHint(true);
+    }, WAKE_UP_HINT_DELAY_MS);
 
     try {
       const loggedInUser = await login(formData.email, formData.password);
@@ -33,6 +45,10 @@ function LoginPage() {
       }
     } catch (err) {
       setError(err.message || "Login failed");
+    } finally {
+      clearTimeout(wakeUpTimerRef.current);
+      setIsSubmitting(false);
+      setShowWakeUpHint(false);
     }
   }
 
@@ -50,6 +66,11 @@ function LoginPage() {
         <p className="section-text">Use admin in email for admin access.</p>
 
         {error && <p className="auth-error">{error}</p>}
+        {showWakeUpHint && (
+          <p className="section-text">
+            Still working — the server was asleep and can take up to a minute to wake up on its first request.
+          </p>
+        )}
 
         <div className="form-field">
           <label htmlFor="email">Email</label>
@@ -79,7 +100,9 @@ function LoginPage() {
           />
         </div>
 
-        <button type="submit" className="primary-btn">Login</button>
+        <button type="submit" className="primary-btn" disabled={isSubmitting}>
+          {isSubmitting ? "Logging in..." : "Login"}
+        </button>
 
         <p className="auth-switch">
           Don&apos;t have an account? <Link to="/signup">Sign up</Link>
