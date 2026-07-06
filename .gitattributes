@@ -1,0 +1,18 @@
+# Ignore Maven build output and wrappers
+/target/* linguist-vendored
+/.mvn/* linguist-vendored
+mvnw* linguist-vendored
+
+# Ignore H2 database files if committed
+*.mv.db linguist-vendored
+*.trace.db linguist-vendored
+
+# Force GitHub to prioritize Java
+*.java linguist-language=Java
+
+# If you have frontend JS files causing the issue, choose ONE option below:
+# Option A: Completely hide all JavaScript files from stats
+*.js linguist-detectable=false
+
+# Option B: Reclassify JavaScript as Java (forces it into the Java percentage)
+# *.js linguist-language=Java
